@@ -132,12 +132,6 @@ export class PackageBuildCommand extends Command implements CommandPreRun {
         this.env.log.error(`Profile ${chalk.bold(p.tag)} (${chalk.bold(p.name)}) was found, but didn't have credentials for ${pkg.formatPlatform(platform)}.`); // TODO: link to docs
         return 1;
       }
-
-      if (release && p.type !== 'production') {
-        this.env.log.error(`Profile ${chalk.bold(p.tag)} (${chalk.bold(p.name)}) is a ${chalk.bold(p.type)} profile, which won't work for release builds.\n` +
-                           `Please use a production security profile.`); // TODO: link to docs
-        return 1;
-      }
     }
 
     if (project.type === 'ionic-angular' && release && !prod) {
